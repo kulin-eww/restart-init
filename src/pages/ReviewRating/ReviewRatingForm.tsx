@@ -1,9 +1,5 @@
 import React, { useState, useRef } from "react";
-import {
-  TextField,
-  FormControlLabel,
-  Rating,
-} from "@mui/material";
+import { TextField, FormControlLabel, Rating } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +35,7 @@ const ReviewRatingForm: React.FC<{
         >
           <ArrowLeftIcon className="h-5 cursor-pointer" />
         </div>
-        <div className="text-xl font-bold">View Reviews & Ratings</div>
+        <div className="text-xl font-semibold">View Reviews & Ratings</div>
       </div>
       <hr />
       <form onSubmit={formik.handleSubmit} className="w-full mt-4 bg-bg-secondary p-4 rounded-xl">

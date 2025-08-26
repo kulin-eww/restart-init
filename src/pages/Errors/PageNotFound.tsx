@@ -3190,7 +3190,7 @@ const PageNotFound = () => {
     <>
       <div className="flex flex-col justify-center items-center min-h-[150px]">
         <Lottie animationData={json} loop={true} className="w-128 h-110" />
-        <div className="text-8xl font-bold text-primary">404</div>
+        <div className="text-8xl font-semibold text-primary">404</div>
         <p className="font-semibold text-4xl text-secondary mt-4">Page not Found</p>
       </div>
     </>

@@ -59,7 +59,7 @@ const TicketSubjectForm: React.FC<{
         >
           <ArrowLeftIcon className="h-5 text-xl mt-0.5" />
         </div>
-        <div className="text-xl font-bold">{title} Ticket Subject</div>
+        <div className="text-xl font-semibold">{title} Ticket Subject</div>
       </div>
       <hr />
       <div className="w-full mt-4 bg-bg-secondary p-4 rounded-xl">

@@ -8,14 +8,14 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tool
 
 export function EarningsAndSupport() {
   // Data for Earnings Bar Chart
-  const purple = getTailwindColor("--color-purple");
+  const secondary = getTailwindColor("--color-secondary");
   const barData = {
     labels: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
     datasets: [
       {
         label: "Earnings",
         data: [300, 400, 350, 500, 800, 600, 550],
-        backgroundColor: purple,
+        backgroundColor: secondary,
         borderRadius: 6,
       },
     ],
@@ -36,7 +36,7 @@ export function EarningsAndSupport() {
     datasets: [
       {
         data: [85, 15],
-        backgroundColor: [purple, "#1f2937"],
+        backgroundColor: [secondary, "#1f2937"],
         borderWidth: 0,
         cutout: "80%",
       },
@@ -52,11 +52,11 @@ export function EarningsAndSupport() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
       {/* Earnings Reports */}
       <div className="bg-layout-bg p-6 rounded-xl shadow-lg">
-        <h2 className="text-lg font-bold">Earning Reports</h2>
+        <h2 className="text-lg font-semibold">Earning Reports</h2>
         <p className="text-gray-500 text-sm">Weekly Earnings Overview</p>
 
         <div className="flex items-center gap-3 mt-4">
-          <h3 className="text-3xl font-bold">$468</h3>
+          <h3 className="text-3xl font-semibold">$468</h3>
           <span className="text-green-500 text-sm font-medium">+4.2%</span>
         </div>
         <p className="text-text-secondary text-sm mt-1">You informed of this week compared to last week</p>
@@ -68,21 +68,21 @@ export function EarningsAndSupport() {
         {/* Small Stats */}
         <div className="mt-6 grid grid-cols-3 gap-4 text-sm">
           <div>
-            <div className="flex items-center gap-2 font-bold text-gray-500">
-              <CurrencyDollarIcon className="w-4 h-4 text-purple" />
+            <div className="flex items-center gap-2 font-semibold text-gray-500">
+              <CurrencyDollarIcon className="w-4 h-4 text-secondary" />
               Earnings
             </div>
             <p className="font-semibold">$545.69</p>
           </div>
           <div>
-            <div className="flex items-center gap-2 font-bold text-gray-500">
+            <div className="flex items-center gap-2 font-semibold text-gray-500">
               <CheckCircleIcon className="w-4 h-4 text-teal" />
               Profit
             </div>
             <p className="font-semibold">$256.34</p>
           </div>
           <div>
-            <div className="flex items-center gap-2 font-bold text-gray-500">
+            <div className="flex items-center gap-2 font-semibold text-gray-500">
               <CurrencyDollarIcon className="w-4 h-4 text-red" />
               Expense
             </div>
@@ -96,13 +96,13 @@ export function EarningsAndSupport() {
         <h2 className="text-lg font-semibold">Support Tracker</h2>
         <p className="text-gray-500 text-sm">Last 7 Days</p>
 
-        <h3 className="text-3xl font-bold mt-4">164</h3>
+        <h3 className="text-3xl font-semibold mt-4">164</h3>
         <p className="text-gray-500 text-sm">Total Tickets</p>
 
         <div className="mt-4 flex items-center gap-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2 text-gray-500">
-              <TicketIcon className="w-4 h-4 text-purple" />
+              <TicketIcon className="w-4 h-4 text-secondary" />
               New Tickets
             </div>
             <p>142</p>
@@ -130,7 +130,7 @@ export function EarningsAndSupport() {
             </div>
             <div className="absolute text-center">
               <p className="text-gray-500 text-sm">Completed Task</p>
-              <p className="text-2xl font-bold">85%</p>
+              <p className="text-2xl font-semibold">85%</p>
             </div>
           </div>
         </div>
@@ -207,13 +207,13 @@ export function ProfitExpensesLeads() {
     <div className="grid grid-cols-1 lg:grid-cols-3 mt-8 gap-6">
       {/* Profit Card */}
       <div className="bg-layout-bg p-6 rounded-xl shadow-lg">
-        <h2 className="text-lg font-bold ">Profit</h2>
+        <h2 className="text-lg font-semibold ">Profit</h2>
         <p className="text-gray-500 text-sm">Last Month</p>
         <div className="mt-4 h-24 ">
           <Line data={profitData} options={profitOptions} />
         </div>
         <div className="flex justify-between items-center mt-4">
-          <p className="text-xl font-bold">624k</p>
+          <p className="text-xl font-semibold">624k</p>
           <span className="text-green text-sm font-medium">+8.2%</span>
         </div>
       </div>
@@ -225,7 +225,7 @@ export function ProfitExpensesLeads() {
         <div className="w-32 h-20 mt-4 flex justify-center">
           <Doughnut data={expensesData} options={expensesOptions} />
         </div>
-        <p className="text-xl font-bold mt-2">78%</p>
+        <p className="text-xl font-semibold mt-2">78%</p>
         <p className="text-gray-500 text-sm">$21k Expenses more than last month</p>
       </div>
 
@@ -233,12 +233,12 @@ export function ProfitExpensesLeads() {
       <div className="bg-layout-bg p-6 rounded-xl shadow-lg flex flex-col items-center">
         <h2 className="text-lg font-semibold">Generated Leads</h2>
         <p className="text-gray-500 text-sm">Monthly Report</p>
-        <p className="text-3xl font-bold mt-4">4,350</p>
+        <p className="text-3xl font-semibold mt-4">4,350</p>
         <span className="text-green text-sm font-medium">+15.8%</span>
         <div className="w-28 h-28 mt-4 flex justify-center relative">
           <Doughnut data={leadsData} options={leadsOptions} />
           <div className="absolute inset-0 flex flex-col justify-center items-center">
-            <p className="text-lg font-bold">184</p>
+            <p className="text-lg font-semibold">184</p>
             <p className="text-gray-500 text-xs">Total</p>
           </div>
         </div>

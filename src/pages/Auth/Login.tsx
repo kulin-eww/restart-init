@@ -47,7 +47,7 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <h2 className="text-3xl font-bold mb-6">Login</h2>
+      <h2 className="text-3xl font-semibold mb-6">Login</h2>
 
       <div className="!space-y-4">
         <TextField

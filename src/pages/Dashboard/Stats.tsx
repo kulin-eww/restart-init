@@ -3,20 +3,20 @@ import { UserIcon, UserPlusIcon, UserGroupIcon, UsersIcon } from "@heroicons/rea
 
 export default function StatsCards() {
   const colorMap = {
-    purple: "var(--color-purple)",
+    secondary: "var(--color-secondary)",
     green: "var(--color-green)",
     red: "var(--color-red)",
     yellow: "var(--color-yellow)",
   };
-  const stats = [ 
+  const stats = [
     {
       title: "Session",
       value: "21,459",
       change: "+29%",
       changeColor: "text-green-500",
       desc: "Total User",
-      shadowColor: "purple",
-      icon: <UserGroupIcon className="w-6 h-6" style={{ color: colorMap["purple"] }} />,
+      shadowColor: "secondary",
+      icon: <UserGroupIcon className="w-6 h-6" style={{ color: colorMap["secondary"] }} />,
     },
     {
       title: "Paid Users",
@@ -61,7 +61,7 @@ export default function StatsCards() {
           onMouseLeave={(e) => (e.currentTarget.style.boxShadow = `0 1px 0 0 ${colorMap[stat.shadowColor]}`)}
         >
           <div className="flex items-center justify-between">
-            <span className="text-lg font-bold">{stat.title}</span>
+            <span className="text-lg font-semibold">{stat.title}</span>
             <div className="bg-bg-secondary p-2 rounded-lg">
               {React.cloneElement(stat.icon, { style: { color: colorMap[stat.shadowColor] } })}
             </div>

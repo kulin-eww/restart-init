@@ -43,7 +43,7 @@ const TicketForm: React.FC<{
         >
           <ArrowLeftIcon className="h-5 cursor-pointer" />
         </div>
-        <div className="text-xl font-bold">View User</div>
+        <div className="text-xl font-semibold">View User</div>
       </div>
       <hr />
       <div className="w-full mt-4 bg-bg-secondary p-8 rounded-xl">

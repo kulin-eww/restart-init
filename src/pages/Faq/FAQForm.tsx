@@ -1,10 +1,10 @@
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { Button, FormControlLabel, MenuItem, Switch, TextField } from '@mui/material';
-import { useFormik } from 'formik';
-import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { Button, FormControlLabel, MenuItem, Switch, TextField } from "@mui/material";
+import { useFormik } from "formik";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import RichTextEditor from '../../components/CMS/RichTextEditor';
+import RichTextEditor from "../../components/CMS/RichTextEditor";
 
 interface Props {
   isEdit: true | false | "view";
@@ -15,8 +15,8 @@ interface Props {
 }
 
 const FAQForm: React.FC<Props> = ({ isEdit, onSave, initialValues, id, isPending }) => {
-  console.log("Line 15", initialValues)
-  const navigate = useNavigate()
+  console.log("Line 15", initialValues);
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: initialValues,
     enableReinitialize: true,
@@ -25,29 +25,29 @@ const FAQForm: React.FC<Props> = ({ isEdit, onSave, initialValues, id, isPending
       "answer-en": Yup.string().required("Answer EN is required"),
       "question-ar": Yup.string().required("Question AR is required"),
       "answer-ar": Yup.string().required("Answer AR is required"),
-      "type": Yup.string().required("Role is required"),
+      type: Yup.string().required("Role is required"),
     }),
     onSubmit: async (values) => {
       const payload = {
-        "type": values?.type,
-        "question": {
-          "en": values?.["question-en"],
-          "ar": values?.["question-ar"]
+        type: values?.type,
+        question: {
+          en: values?.["question-en"],
+          ar: values?.["question-ar"],
         },
-        "answer": {
-          "en": values?.["answer-en"],
-          "ar": values?.["answer-ar"]
-        }
-      }
-      if(isEdit){
-        onSave.mutate({...payload, id: id});
+        answer: {
+          en: values?.["answer-en"],
+          ar: values?.["answer-ar"],
+        },
+      };
+      if (isEdit) {
+        onSave.mutate({ ...payload, id: id });
       } else {
         onSave.mutate(payload);
       }
     },
   });
 
-  console.log("Line 42", formik?.values, initialValues)
+  console.log("Line 42", formik?.values, initialValues);
 
   return (
     <div className="bg-layout-bg rounded-lg shadow-md px-6 py-4">
@@ -59,12 +59,13 @@ const FAQForm: React.FC<Props> = ({ isEdit, onSave, initialValues, id, isPending
         >
           <ArrowLeftIcon className="h-5 cursor-pointer" />
         </div>
-        <div className="text-xl font-bold mb-2">{isEdit === true ? "Edit FAQ" : isEdit === false ? "Add FAQ" : "View FAQ"}</div>
+        <div className="text-xl font-semibold mb-2">
+          {isEdit === true ? "Edit FAQ" : isEdit === false ? "Add FAQ" : "View FAQ"}
+        </div>
       </div>
       <hr />
       <div className="w-full mt-4 bg-bg-secondary p-4 rounded-xl">
         <form onSubmit={formik.handleSubmit} className="w-full mt-4 bg-bg-secondary p-4 rounded-xl">
-
           <div className="grid grid-cols-2 gap-4">
             <TextField
               name="question-en"
@@ -80,8 +81,8 @@ const FAQForm: React.FC<Props> = ({ isEdit, onSave, initialValues, id, isPending
                   readOnly: isEdit === "view" ? true : false,
                 },
               }}
-              variant={isEdit === "view" ? 'filled': "outlined"}
-           />
+              variant={isEdit === "view" ? "filled" : "outlined"}
+            />
 
             <TextField
               name="question-ar"
@@ -97,7 +98,7 @@ const FAQForm: React.FC<Props> = ({ isEdit, onSave, initialValues, id, isPending
                   readOnly: isEdit === "view" ? true : false,
                 },
               }}
-              variant={isEdit === "view" ? 'filled': "outlined"}
+              variant={isEdit === "view" ? "filled" : "outlined"}
             />
 
             <TextField
@@ -116,7 +117,7 @@ const FAQForm: React.FC<Props> = ({ isEdit, onSave, initialValues, id, isPending
                   readOnly: isEdit === "view" ? true : false,
                 },
               }}
-              variant={isEdit === "view" ? 'filled': "outlined"}
+              variant={isEdit === "view" ? "filled" : "outlined"}
             />
 
             <TextField
@@ -127,7 +128,7 @@ const FAQForm: React.FC<Props> = ({ isEdit, onSave, initialValues, id, isPending
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={formik.touched?.["answer-ar"] && Boolean(formik.errors?.["answer-ar"])}
-              helperText={formik.touched?.['answer-ar'] && (formik.errors?.["answer-ar"] as string)}
+              helperText={formik.touched?.["answer-ar"] && (formik.errors?.["answer-ar"] as string)}
               multiline
               rows={4}
               slotProps={{
@@ -135,7 +136,7 @@ const FAQForm: React.FC<Props> = ({ isEdit, onSave, initialValues, id, isPending
                   readOnly: isEdit === "view" ? true : false,
                 },
               }}
-              variant={isEdit === "view" ? 'filled': "outlined"}
+              variant={isEdit === "view" ? "filled" : "outlined"}
             />
 
             {/* <RichTextEditor
@@ -150,11 +151,10 @@ const FAQForm: React.FC<Props> = ({ isEdit, onSave, initialValues, id, isPending
                 isRTL={false}
                 readOnly={isEdit === "view"}
             /> */}
-
           </div>
 
-          <div className='w-1/2 mt-4'>
-            <div className='flex justify-center items-center'>
+          <div className="w-1/2 mt-4">
+            <div className="flex justify-center items-center">
               <TextField
                 name="type"
                 label="Select Role"
@@ -166,22 +166,20 @@ const FAQForm: React.FC<Props> = ({ isEdit, onSave, initialValues, id, isPending
                 error={formik?.touched?.type && Boolean(formik?.errors?.type)}
                 helperText={formik?.touched?.type && (formik?.errors?.type as string)}
                 slotProps={{
-                input: {
-                  readOnly: isEdit === "view" ? true : false,
-                },
-              }}
-              variant={isEdit === "view" ? 'filled': "outlined"}
+                  input: {
+                    readOnly: isEdit === "view" ? true : false,
+                  },
+                }}
+                variant={isEdit === "view" ? "filled" : "outlined"}
               >
                 <MenuItem value="user_app">Customer</MenuItem>
                 <MenuItem value="vendor">Vendor</MenuItem>
                 <MenuItem value="driver_app">Driver</MenuItem>
               </TextField>
-
             </div>
           </div>
 
-          {
-            isEdit !== "view" &&
+          {isEdit !== "view" && (
             <div className="flex justify-end gap-4 mt-6">
               <Button variant="cancel" onClick={() => formik.resetForm()}>
                 Cancel
@@ -190,11 +188,11 @@ const FAQForm: React.FC<Props> = ({ isEdit, onSave, initialValues, id, isPending
                 {isEdit ? "Update" : "Add"}
               </Button>
             </div>
-          }
+          )}
         </form>
       </div>
     </div>
   );
-}
+};
 
-export default FAQForm
+export default FAQForm;

@@ -1,7 +1,7 @@
 const LoaderTest = () => (
   <div className="flex items-center justify-center w-full h-full min-h-[200px]">
     <svg
-      className="animate-spin h-10 w-10 text-purple"
+      className="animate-spin h-10 w-10 text-secondary"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

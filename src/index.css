@@ -1,39 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 
 :root {
-  --color-text-primary: #363636;
-  --color-text-secondary: #2f2b3d8c;
+  --color-layout-bg: #EBF4FA;
   --color-bg-secondary: #ffff;
-  --color-sider-active: #2f2b3d29;
+  --color-bg-gradient: linear-gradient(90deg, #8B0000 0%, #2A0B0A 145.34%);
+
+  --color-secondary: #BF5700;
+
+  --color-text-primary: #394D59;
+  --color-text-secondary: #717171;
   --color-primary: #277869;
-  --color-layout-bg: #DAE5EC;
-  --color-green-3: #219564;
-  --color-blue: #007bff;
-  --color-indigo: #6610f2;
-  --color-purple: #7367f0;
-  --color-pink: #e83e8c;
   --color-red: #ea5455;
   --color-warning: #ff8228;
   --color-teal: #20c997;
   --color-cyan: #00cfe8;
   --color-gray-500: #a7a7a6;
+  --color-btn-gr: linear-gradient(90deg, #8B0000 0%, #2A0B0A 145.34%);
 }
 
 @theme {
-  --font-mulish: "Mulish", sans-serif;
+  --font-mulish: "Poppins", sans-serif;
   --color-text-primary: var(--color-text-primary);
   --color-primary: var(--color-primary);
   --color-text-secondary: var(--color-text-secondary);
   --color-layout-bg: var(--color-layout-bg);
   --color-secondary: var(--color-gray-400);
   --color-bg-secondary: var(--color-bg-secondary);
-  --color-green-3: var(--color-green-3);
-  --color-sider-active: var(--color-sider-active);
-  --color-purple: var(--color-purple);
   --color-teal: var(--color-teal);
   --color-red: var(--color-red);
   --color-warning: var(--color-warning);
+  --color-btn-gr: var(--color-btn-gr);
+  --color-bg-gradient: var(--color-bg-gradient);
 }
 
 /* Add dark mode variables */
@@ -44,12 +42,12 @@ body {
 }
 
 .sidebar-active {
-  background-color: var(--color-primary) !important;
+  background: var(--color-btn-gr) !important;
   color: var(--color-white) !important;
 }
 
 .sidebar-item:hover {
-  background-color: var(--color-sider-active);
+  background-color: var(--color-btn-gr) !important;
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -57,7 +55,10 @@ body {
 .sidebar-scroll::-webkit-scrollbar {
   display: none;
 }
+
 .sidebar-scroll {
-  -ms-overflow-style: none; /* IE/Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }

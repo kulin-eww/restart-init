@@ -25,7 +25,7 @@ const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
 }) => {
   const content = (isActive: boolean = false) => (
     <div
-      className={`flex gap-3 items-center my-1 py-2 cursor-pointer px-4 transition-colors duration-200 rounded-md hover:text-white  hover:bg-green-3 font-semibold  ${
+      className={`flex gap-3 items-center my-1 py-2 hover:[background:linear-gradient(90deg,#8B0000_0%,#2A0B0A_145.34%)] cursor-pointer px-2 transition-colors duration-200 rounded-md hover:text-white  font-semibold  ${
         isActive ? "sidebar-active" : ""
       }`}
     >
@@ -40,7 +40,7 @@ const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
         {({ open }) => (
           <span>
             {/* <NavLink to={path ? path : " "}> */}
-            <Disclosure.Button className="flex items-center justify-between w-full py-2 px-4 hover:bg-green-3 hover:text-white rounded-md font-semibold cursor-pointer">
+            <Disclosure.Button className="flex items-center justify-between w-full py-2 px-2 hover:[background:linear-gradient(90deg,#8B0000_0%,#2A0B0A_145.34%)] hover:text-white rounded-md font-semibold cursor-pointer">
               <div className="flex items-center gap-3">
                 <Icon className="w-5 h-5" />
                 <span>{label}</span>
@@ -76,7 +76,7 @@ const SidebarNavItem: React.FC<SidebarNavItemProps> = ({
                           <NavLink key={label} to={path}>
                             {({ isActive }) => (
                               <div
-                                className={`flex gap-3 hover:bg-green-3 hover:text-white items-center py-2 cursor-pointer px-4 transition-colors duration-200 rounded-md font-semibold ${
+                                className={`flex gap-3 hover:[background:linear-gradient(90deg,#8B0000_0%,#2A0B0A_145.34%)] hover:text-white items-center py-2 cursor-pointer px-2 transition-colors duration-200 rounded-md font-semibold  my-0.5 ${
                                   isActive ? "sidebar-active" : ""
                                 }`}
                               >

@@ -31,7 +31,7 @@ const VendorForm: React.FC<{
         >
           <ArrowLeftIcon className="h-5 cursor-pointer" />
         </div>
-        <div className="text-xl font-bold">View Vendor</div>
+        <div className="text-xl font-semibold">View Vendor</div>
       </div>
       <hr />
       <div className="w-full mt-4 bg-bg-secondary p-6 rounded-xl">

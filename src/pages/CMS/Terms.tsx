@@ -7,12 +7,11 @@ import { EyeIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 import { BasicTable } from "../../components/Table/BasicTable";
 
- export const stripHtml = (html: string = "") =>
-  html.replace(/<[^>]+>/g, "");
- 
+export const stripHtml = (html: string = "") => html.replace(/<[^>]+>/g, "");
+
 const Terms = () => {
   const [cmsContent, setCmsContent] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: "asc" | "desc" } | null>(null);
@@ -20,23 +19,23 @@ const Terms = () => {
   const [totalCount, setTotalCount] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [pageSize, setPageSize] = useState(10);
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
 
   const { data, isSuccess, error, isError, refetch } = useQuery({
     queryKey: ["getCMS"],
     queryFn: () => getCMSAPI(),
-    enabled: true
+    enabled: true,
   });
 
   useEffect(() => {
     if (isSuccess) {
-      console.log("Line 30", data)
-      const cmsData = Array.isArray(data?.data)  ? data.data : data?.data ? [data.data] : [];
-      const tAndCData = cmsData?.filter((item: any)=>{
-        return item?.name === "terms_and_conditions"
-      })
-      console.log(tAndCData)
-      setCmsContent(tAndCData)
+      console.log("Line 30", data);
+      const cmsData = Array.isArray(data?.data) ? data.data : data?.data ? [data.data] : [];
+      const tAndCData = cmsData?.filter((item: any) => {
+        return item?.name === "terms_and_conditions";
+      });
+      console.log(tAndCData);
+      setCmsContent(tAndCData);
       setTotalCount(tAndCData?.length);
       setIsLoading(false);
     } else if (isError) {
@@ -52,23 +51,35 @@ const Terms = () => {
   // });
 
   const refetchData = useCallback(
-      debounce(() => {
-        refetch();
-      }, 300),
-      []
-    );
+    debounce(() => {
+      refetch();
+    }, 300),
+    []
+  );
 
   useEffect(() => {
     refetchData();
   }, [search]);
 
- 
-
   const getColumns = () => [
     { key: "id", label: "ID", sortable: false },
-    { key: "title", label: "Title", sortable: true, accessor: (row: any)=> stripHtml(row?.show_name?.en )},
+    { key: "title", label: "Title", sortable: true, accessor: (row: any) => stripHtml(row?.show_name?.en) },
     { key: "description", label: "Description", sortable: true, accessor: (row: any) => stripHtml(row?.value?.en) },
-    { key: "role", label: "Role", sortable: true, accessor: (row: any) => row?.for === "web" ? "Web": row?.for === "driver" ? "Driver": row?.for === "vendor" ? "Vendor": row?.for === "user" ? "User": "" },
+    {
+      key: "role",
+      label: "Role",
+      sortable: true,
+      accessor: (row: any) =>
+        row?.for === "web"
+          ? "Web"
+          : row?.for === "driver"
+            ? "Driver"
+            : row?.for === "vendor"
+              ? "Vendor"
+              : row?.for === "user"
+                ? "User"
+                : "",
+    },
     // { key: "createdAt", label: "Created At", sortable: true, accessor: (row: any) => row?.created_at?.split("T")?.[0]},
     // {
     //   key: "status",
@@ -98,7 +109,7 @@ const Terms = () => {
               <EyeIcon
                 style={{ height: 20, color: "#1976d2" }}
                 onClick={() => {
-                  navigate(`/terms/view?id=${row.id}`, {state: row});
+                  navigate(`/terms/view?id=${row.id}`, { state: row });
                 }}
               />
             </Tooltip>
@@ -106,7 +117,7 @@ const Terms = () => {
               <PencilIcon
                 style={{ height: 20, color: "#1976d2" }}
                 onClick={() => {
-                  navigate(`/terms/edit?id=${row.id}`, {state: row});
+                  navigate(`/terms/edit?id=${row.id}`, { state: row });
                 }}
               />
             </Tooltip>
@@ -119,10 +130,7 @@ const Terms = () => {
   const filteredRows = cmsContent?.filter((row) => {
     const searchText = "";
     const search = searchText?.toLowerCase();
-    return (
-      row?.show_name?.en?.toLowerCase().includes(search) ||
-      row?.value?.en?.toLowerCase().includes(search)
-    );
+    return row?.show_name?.en?.toLowerCase().includes(search) || row?.value?.en?.toLowerCase().includes(search);
   });
 
   const sortedRows = sortConfig
@@ -146,31 +154,30 @@ const Terms = () => {
     );
   };
 
-  console.log(cmsContent, filteredRows, paginatedRows)
+  console.log(cmsContent, filteredRows, paginatedRows);
 
   return (
     <div className="bg-layout-bg p-2 rounded-lg shadow-md">
       {/* <Editor title={"Terms & Conditions"} cmsContent={cmsContent} setCmsContent={setCmsContent} /> */}
       <div className="flex justify-between items-center px-2 mb-2">
-        <div className="text-xl font-bold mb-2">Terms & Conditions</div>
+        <div className="text-xl font-semibold mb-2">Terms & Conditions</div>
         <div className="flex gap-2">
           <TextField label="Search" size="small" value={search} onChange={(e) => setSearch(e.target.value)} />
-          
         </div>
       </div>
       <hr />
       <BasicTable
-          isLoading={isLoading}
-          isSuccess={isSuccess}
-          isError={isError}
-          data={paginatedRows}
-          columns={getColumns()}
-          totalCount={totalCount}
-          pageSize={pageSize}
-          setPageSize={setPageSize}
-          pageNumber={pageNumber}
-          setPageNumber={setPageNumber}
-        />
+        isLoading={isLoading}
+        isSuccess={isSuccess}
+        isError={isError}
+        data={paginatedRows}
+        columns={getColumns()}
+        totalCount={totalCount}
+        pageSize={pageSize}
+        setPageSize={setPageSize}
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+      />
     </div>
   );
 };

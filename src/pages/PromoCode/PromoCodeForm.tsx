@@ -33,15 +33,9 @@ const PromoCodeForm: React.FC<{
     enableReinitialize: true,
     initialValues: initialValues,
     validationSchema: Yup.object({
-      code: Yup.string()
-        .required("Code is required")
-        .max(50, "Code must be at most 20 characters"),
-      discount: Yup.string()
-        .required("Discount is required")
-        .max(50, "Discount must be at most 10 characters"),
-      validity: Yup.string()
-        .required("Validity is required")
-        .max(50, "Validity must be at most 10 characters"),
+      code: Yup.string().required("Code is required").max(50, "Code must be at most 20 characters"),
+      discount: Yup.string().required("Discount is required").max(50, "Discount must be at most 10 characters"),
+      validity: Yup.string().required("Validity is required").max(50, "Validity must be at most 10 characters"),
     }),
     onSubmit: async (values) => {
       onSave.mutate(values);
@@ -59,7 +53,7 @@ const PromoCodeForm: React.FC<{
         >
           <ArrowLeftIcon className="h-5 text-xl mt-0.5" />
         </div>
-        <div className="text-xl font-bold">{title} Promo Code</div>
+        <div className="text-xl font-semibold">{title} Promo Code</div>
       </div>
       <hr />
       <div className="w-full mt-4 bg-bg-secondary p-4 rounded-xl">

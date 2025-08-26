@@ -29,9 +29,7 @@ const ResetPassword = () => {
       confirmPassword: "",
     },
     validationSchema: Yup.object({
-      password: Yup.string()
-        .min(8, "Password must be at least 8 characters")
-        .required("Password is required"),
+      password: Yup.string().min(8, "Password must be at least 8 characters").required("Password is required"),
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("password"), null], "Passwords must match")
         .required("Confirm Password is required"),
@@ -43,7 +41,7 @@ const ResetPassword = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <h2 className="text-3xl font-bold mb-6">Reset Password</h2>
+      <h2 className="text-3xl font-semibold mb-6">Reset Password</h2>
 
       <div className="!space-y-4">
         <TextField

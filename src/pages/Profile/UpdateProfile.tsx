@@ -33,14 +33,14 @@ const UpdateProfile = () => {
       email: Yup.string().email("Invalid email address").required("Email is required"),
     }),
     onSubmit: (values) => {
-      mutate(values)
+      mutate(values);
     },
   });
 
   return (
     <>
       <div className="bg-layout-bg shadow-md rounded-xl px-6 py-4">
-        <div className="text-xl font-bold mb-2">Profile</div>
+        <div className="text-xl font-semibold mb-2">Profile</div>
         <hr />
         <div className="mt-4">
           <form onSubmit={handleSubmit} className="w-full">

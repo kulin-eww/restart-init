@@ -11,13 +11,13 @@ type EditorProps = {
   title: string;
   cmsContent: any;
   setCmsContent: (e: any) => void;
-  action: "view" | "edit"
+  action: "view" | "edit";
 };
 
 const Editor = ({ title, cmsContent, setCmsContent, action }: EditorProps) => {
-  console.log("Virat Kohli", cmsContent)
+  console.log("Virat Kohli", cmsContent);
   const [editMode, setEditMode] = useState(true);
-  const [lang, setLang] = useState("en")
+  const [lang, setLang] = useState("en");
   const [editedContent, setEditedContent] = useState<{ en: string; ar: string }>({
     en: cmsContent?.value?.en || "",
     ar: cmsContent?.value?.ar || "",
@@ -34,45 +34,53 @@ const Editor = ({ title, cmsContent, setCmsContent, action }: EditorProps) => {
 
   const [searchParams] = useSearchParams();
   const cmsId = searchParams.get("id");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleSave = () => {
     setCmsContent({
       show_name: cmsContent?.show_name,
       value: {
         en: editedContent?.en,
-        ar: editedContent?.ar
+        ar: editedContent?.ar,
       },
-      id: cmsId
+      id: cmsId,
     });
     mutate({
       show_name: cmsContent?.show_name,
       value: {
         en: editedContent?.en,
-        ar: editedContent?.ar
+        ar: editedContent?.ar,
       },
-      id: cmsId
-    })
-    navigate(-1)
-    setEditMode(false)
+      id: cmsId,
+    });
+    navigate(-1);
+    setEditMode(false);
   };
-  
+
   const { mutate, isPending } = useMutation({
     mutationFn: updateCMSDetailAPI,
     onSuccess: (res) => {
       useToast(res.message);
-      handleSave()
+      handleSave();
     },
     onError: (error) => {
       useToast(error.message, "error");
     },
   });
 
-  console.log(editedContent, cmsContent?.[lang], )
+  console.log(editedContent, cmsContent?.[lang]);
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
-        <h2 className="text-xl font-bold md:text-2xl">{title === "terms_and_conditions" ? "Terms and Conditions" : title === "about_us" ? "About Us" : title === "privacy_policy" ? "Privacy Policy" :""}</h2>
+        <h2 className="text-xl font-semibold md:text-2xl">
+          {title === "terms_and_conditions"
+            ? "Terms and Conditions"
+            : title === "about_us"
+              ? "About Us"
+              : title === "privacy_policy"
+                ? "Privacy Policy"
+                : ""}
+        </h2>
         {/* {action === "edit" && (
           <button
             onClick={() => setEditMode(true)}
@@ -83,32 +91,32 @@ const Editor = ({ title, cmsContent, setCmsContent, action }: EditorProps) => {
           </button>
         )} */}
       </div>
-        <div className="flex justify-end items-center w-1/2 mb-4">
-          <TextField
-                name="locale"
-                label="Language"
-                value={lang}
-                onChange={(e)=>setLang(e.target.value)}
-                select
-                fullWidth
-                
-              >
-                <MenuItem value="en">English</MenuItem>
-                <MenuItem value="ar">Arabic</MenuItem>
-              </TextField>  
-          
-        </div>
+      <div className="flex justify-end items-center w-1/2 mb-4">
+        <TextField
+          name="locale"
+          label="Language"
+          value={lang}
+          onChange={(e) => setLang(e.target.value)}
+          select
+          fullWidth
+        >
+          <MenuItem value="en">English</MenuItem>
+          <MenuItem value="ar">Arabic</MenuItem>
+        </TextField>
+      </div>
 
       {editMode ? (
         <>
-          <RichTextEditor value={editedContent?.[lang]} onChange={(val) =>
+          <RichTextEditor
+            value={editedContent?.[lang]}
+            onChange={(val) =>
               setEditedContent((prev) => ({
                 ...prev,
                 [lang]: val, // update only current language
               }))
-            } />
-            {
-              action === "edit" &&
+            }
+          />
+          {action === "edit" && (
             <div className={`mt-4 flex flex-wrap gap-2`}>
               <Button
                 onClick={handleSave}
@@ -129,7 +137,7 @@ const Editor = ({ title, cmsContent, setCmsContent, action }: EditorProps) => {
                 Cancel
               </Button>
             </div>
-            }
+          )}
         </>
       ) : cmsContent ? (
         <div className="prose prose-sm sm:prose lg:prose-lg text-gray-800 max-w-none mt-4">

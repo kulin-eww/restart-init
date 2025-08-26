@@ -7,7 +7,7 @@ const TicketSubjectHeader: React.FC = () => {
   return (
     <>
       <div className="flex justify-between items-center px-2 mb-2">
-        <div className="text-xl font-bold mb-2">Ticket Subject</div>
+        <div className="text-xl font-semibold mb-2">Ticket Subject</div>
         <div className="flex gap-2">
           <Button
             onClick={() => {

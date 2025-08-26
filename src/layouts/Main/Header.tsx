@@ -44,16 +44,15 @@ const Header = () => {
       </div>
       <div className="flex gap-2 justify-between items-center mr-5">
         <div id="account-menu" onClick={handleClick} className="relative group">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-110 border-2 border-white shadow-lg hover:rotate-3">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-102 shadow-md ">
             <svg
-              className="w-4 h-4 text-white transition-transform duration-300 group-hover:scale-110"
+              className="w-5 h-5 text-white transition-transform duration-300 group-hover:scale-110"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
               <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
             </svg>
           </div>
-          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 scale-0 group-hover:scale-100"></div>
         </div>
       </div>
       <ProfileMenu />

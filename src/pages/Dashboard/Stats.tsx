@@ -4,9 +4,9 @@ import { UserIcon, UserPlusIcon, UserGroupIcon, UsersIcon } from "@heroicons/rea
 export default function StatsCards() {
   const colorMap = {
     secondary: "var(--color-secondary)",
-    green: "var(--color-green)",
+    green: "var(--color-primary)",
     red: "var(--color-red)",
-    yellow: "var(--color-yellow)",
+    yellow: "var(--color-cyan)",
   };
   const stats = [
     {

@@ -29,6 +29,7 @@
   --color-bg-secondary: var(--color-bg-secondary);
   --color-teal: var(--color-teal);
   --color-red: var(--color-red);
+  --color-cyan: var(--color-cyan);
   --color-warning: var(--color-warning);
   --color-btn-gr: var(--color-btn-gr);
   --color-bg-gradient: var(--color-bg-gradient);
@@ -77,14 +78,6 @@ body {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
 
-/* Enhanced animation classes */
-.hover\:rotate-3:hover {
-  transform: rotate(3deg);
-}
-
-.hover\:scale-110:hover {
-  transform: scale(1.1);
-}
 
 .hover\:shadow-xl:hover {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);

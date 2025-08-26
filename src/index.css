@@ -62,3 +62,50 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+
+/* Custom gradient classes for profile icon */
+.from-primary {
+  --tw-gradient-from: #277869;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(39, 120, 105, 0));
+}
+
+.to-secondary {
+  --tw-gradient-to: #20c997;
+}
+
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+/* Enhanced animation classes */
+.hover\:rotate-3:hover {
+  transform: rotate(3deg);
+}
+
+.hover\:scale-110:hover {
+  transform: scale(1.1);
+}
+
+.hover\:shadow-xl:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.scale-0 {
+  transform: scale(0);
+}
+
+.group:hover .group-hover\:scale-100 {
+  transform: scale(1);
+}
